@@ -53,10 +53,11 @@ class Population {
                 // shorter path bonus
                 rat.fitness += (this.lifeSpan - rat.dna.curr) * 10;
                 this.goals++;
+            } else {
+                // score based on distance: the shorter the higher
+                rat.fitness += this.maze.maxDistance - this.maze.calculateDistance(rat.x, rat.y, this.maze.target.x, this.maze.target.y);
+                rat.fitness = round(rat.fitness, 2);
             }
-
-            rat.fitness += this.maze.maxDistance - this.maze.calculateDistance(rat.x, rat.y, this.maze.target.x, this.maze.target.y);
-            rat.fitness = round(rat.fitness, 2);
 
             // select fittest
             if (rat.fitness > fittest.fitness) {
