@@ -34,6 +34,10 @@ class DNA {
       return gene;
     }
 
+    clone() {
+      return new DNA(this.genes.length, this.mutationFactor, this.genes.slice(0));
+    }
+
     cross(parent) {
       const mid = random(this.genes.length);
 

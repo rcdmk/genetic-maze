@@ -20,7 +20,7 @@ class Population {
             let dna;
 
             if (parent2) {
-                dna = parent2.dna;
+                dna = parent2.dna.clone();
             } else {
                 dna = new DNA(this.lifeSpan, this.mutationFactor);
             }
