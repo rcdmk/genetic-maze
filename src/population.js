@@ -49,7 +49,7 @@ class Population {
 
             if (rat.x == this.maze.target.x && rat.y == this.maze.target.y) {
                 // goal bonus
-                rat.fitness += 100;
+                rat.fitness += 1000;
                 // shorter path bonus
                 rat.fitness += (this.lifeSpan - rat.dna.curr) * 10;
                 this.goals++;
