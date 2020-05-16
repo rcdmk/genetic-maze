@@ -1,7 +1,7 @@
 const tileSize = 32;
 const populationSize = 500;
 const lifeSpan = 50;
-const mutationFactor = 1; // %
+const mutationFactor = 0.5; // %
 
 let maze;
 let population;
