@@ -8,24 +8,24 @@ const dirs = [
 const noMove = { x: 0, y: 0 };
 
 class DNA {
-    constructor(lifeSpan, generation) {
-      if (lifeSpan && lifeSpan.push) {
-        // received array of genes
-        this.genes = lifeSpan;
+    constructor(chainLength, mutationFactor = 0, genes = null, generation = 1) {
+      if (genes) {
+        this.genes = genes;
       } else {
-        // random chain
-        this.genes = new Array(lifeSpan);
+        // create random chain
+        this.genes = new Array(chainLength);
 
-        for (let i = 0; i < lifeSpan; i++) {
+        for (let i = 0; i < chainLength; i++) {
           this.genes[i] = random(dirs);
         }
       }
 
-      this.generation = generation || 1;
+      this.mutationFactor = mutationFactor;
+      this.generation = generation;
       this.curr = 0;
     }
 
-    next() {
+    nextStep() {
       if (this.curr >= this.genes.length) return noMove;
 
       const gene = this.genes[this.curr];
@@ -40,7 +40,7 @@ class DNA {
       const newGenes = new Array(this.genes.length);
 
       for(let i = 0; i < this.genes.length; i++) {
-        if (random(100) < 1) {
+        if (random(100) < this.mutationFactor) {
           // mutation
           newGenes[i] = random(dirs);
         } else {
@@ -49,6 +49,6 @@ class DNA {
         }
       }
 
-      return new DNA(newGenes, parent.generation + 1);
+      return new DNA(newGenes.length, this.mutationFactor, newGenes, parent.generation + 1);
     }
   }

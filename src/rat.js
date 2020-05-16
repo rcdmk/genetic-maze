@@ -21,7 +21,7 @@ class Rat {
             return;
         }
 
-        const step = this.dna.next();
+        const step = this.dna.nextStep();
 
         if (step.x == 0 && step.y == 0) {
             // no more steps to do, end of life span

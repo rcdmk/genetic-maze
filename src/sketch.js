@@ -1,6 +1,7 @@
 const tileSize = 32;
 const populationSize = 500;
 const lifeSpan = 50;
+const mutationFactor = 1; // %
 
 let maze;
 let population;
@@ -12,7 +13,7 @@ const frameRateValues = [1, 15, 30, 60];
 
 function setup() {
     maze = new Maze(tileSize);
-    population = new Population(populationSize, lifeSpan, maze);
+    population = new Population(populationSize, lifeSpan, mutationFactor, maze);
 
     // generate random population to start with
     population.produceGeneration();

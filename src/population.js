@@ -1,7 +1,8 @@
 class Population {
-    constructor(size, lifeSpan, maze) {
+    constructor(size, lifeSpan, mutationFactor, maze) {
         this.size = size;
         this.lifeSpan = lifeSpan;
+        this.mutationFactor = mutationFactor;
         this.maze = maze;
         this.goals = 0;
         this.maxGoals = 0;
@@ -21,7 +22,7 @@ class Population {
             if (parent2) {
                 dna = parent2.dna;
             } else {
-                dna = new DNA(this.lifeSpan);
+                dna = new DNA(this.lifeSpan, this.mutationFactor);
             }
 
             if (parent1) dna = dna.cross(parent1.dna);
