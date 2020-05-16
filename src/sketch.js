@@ -9,7 +9,7 @@ let status;
 let frameRateToggle;
 let currFrameRate;
 let currFrameRateIndex = 0;
-const frameRateValues = [1, 15, 30, 60];
+const frameRateValues = [60, 1, 15, 30];
 
 function setup() {
     maze = new Maze(tileSize);
